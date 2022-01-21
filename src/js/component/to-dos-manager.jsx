@@ -2,7 +2,23 @@ import React from "react";
 import { useState } from "react";
 
 const ToDosManager = () => {
-	const [myList, setMyList] = useState([]);
+	function getTodoItems() {
+		var requestOptions = {
+			method: "GET",
+			redirect: "follow"
+		};
+
+		fetch(
+			"https://assets.breatheco.de/apis/fake/todos/user/davidcamposhernandez",
+			requestOptions
+		)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log("error", error));
+
+		return chamadaAoBancoDeDados();
+	}
+	const [myList, setMyList] = useState(APICall);
 	const [task, setTask] = useState("");
 
 	const AddTask = () => {
